@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Untuk Kamu ❤️</title>
+    <style>
+        body { background-color: #fff0f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; color: #333; }
+        .bucin-container { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: inline-block; margin-top: 30px; }
+        h1 { color: #ff4d6d; }
+        .btn-love { background-color: #ff4d6d; color: white; border: none; padding: 10px 25px; border-radius: 10px; cursor: pointer; font-size: 1.1em; transition: 0.3s; }
+        .btn-love:hover { background-color: #ff758f; transform: scale(1.1); }
+        #btn-ga { background-color: #ccc; color: #333; border: none; padding: 10px 25px; border-radius: 10px; cursor: pointer; font-size: 1.1em; position: relative; }
+
+        /* Gaya untuk Animasi Love Gede */
+        .heart-pop {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 100px;
+            z-index: 9999;
+            pointer-events: none;
+            animation: popOut 1s ease-out forwards;
+        }
+        @keyframes popOut {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+            50% { transform: translate(-50%, -50%) scale(5); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(10); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#">Beranda</a> | <a href="#">Kenangan</a> | <a href="#">Kontak</a> | <a href="#login">Login</a>
+    </nav>
+
+    <div class="bucin-container">
+        <h1>Haii Kamu... ❤️</h1>
+        <p>Aku punya pertanyaan penting buat kamu,</p>
+        <h2 id="pertanyaan">Kamu sayang aku ?</h2>
+        
+        <button id="btn-sayang" class="btn-love" onclick="sayangBanget()">Sayang</button>
+        <button id="btn-ga" onmouseover="pindahTombol(this)">Enggak</button>
+    </div>
+
+    <br><br>
+
+    <img src="zoro.jpg" alt="Gambar Saya" width="300">
+
+    <div id="login" style="margin-top: 50px; border-top: 1px solid #ccc; padding-top: 20px;">
+        <h2>Menu Login</h2>
+        <form action="#">
+            <div>
+                <label for="username">Username:</label><br>
+                <input type="text" id="username" name="username">
+            </div>
+            <div>
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password">
+            </div>
+            <br>
+            <button type="submit">Masuk</button>
+        </form>
+    </div>
+
+    <script>
+        function sayangBanget() {
+            // Membuat elemen love raksasa
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.className = 'heart-pop';
+            document.body.appendChild(heart);
+
+            // Menghapus elemen setelah animasi selesai (1 detik)
+            setTimeout(() => {
+                heart.remove();
+            }, 1000);
+
+            alert('Yay! Aku juga sayang banget sama kamu! ❤️❤️❤️');
+            document.getElementById('pertanyaan').innerText = "I Love You Too! ❤️";
+        }
+
+        function pindahTombol(btn) {
+            // Membuat tombol "Enggak" lari saat didekati kursor
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 100);
+            btn.style.position = 'fixed';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+    </script>
+</body>
